@@ -14,7 +14,7 @@ body {
 #log{
 	position:absolute;
 	width: 300px;
-	height: 100px;
+	height: 125px;
 	background-color: #FFF;
 	background-color: rgba(255,255,255, 0.5);
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -72,6 +72,12 @@ body {
 	position:absolute;
 	float: left;
 	clear: none;
+	
+	-webkit-transition: all 0.3s ease-out;
+	-moz-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	-ms-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
 
 #container{
@@ -94,3 +100,21 @@ body {
 	width: 1000px;
 	height: 1100px;
 }
+
+
+#vid{
+	opacity: 0;
+	-webkit-transition: all 0.4s linear;
+	-moz-transition: all 0.4s linear;
+	-o-transition: all 0.4s linear;
+	-ms-transition: all 0.4s linear;
+	transition: all 0.4s linear;
+	
+	position: absolute;
+	width: 800px;
+	height: 450px;
+	top: 100px;
+	left: 4150px;
+	z-index: 500;
+}
+

@@ -7,13 +7,17 @@ var $content;
 var $content_top;
 var loop = true;
 var paused = false;
+var vid;
+var monitor = false;
 
 $(document).ready(function(){
 	$log = $("#log");
 	$content = $(".content");
+	$vid = $("#vid");
 		
 	$content_top = $(".content_top");
-	//console.log("$content "+$content);
+	
+	$log.click(function(){monitor=!monitor; if(!monitor){this.html("")}});
 });
 
 function transEnd(){
@@ -29,6 +33,17 @@ function transEnd(){
 	
 };
 
+function onVideoClick(){
+	if($(this).css("opacity")==0){
+		$(this).css("opacity", 1);
+	}
+	
+	if(this.paused){
+		this.play();
+	}else{
+		this.pause();
+	}
+}
 
 function init(){
 	
@@ -50,13 +65,23 @@ function init(){
 	for(var i=0; i<6; i++){
 		var div = "<div class='top_elem' id='elem_"+i+"'></div>"
 		$content_top.append(div);
-		$("#elem_"+i).css({"top" : 150+Math.random()*300, "left": 150+Math.random()*7000, "width" : 60+Math.random()*600, "height" : 25+Math.random()*100, "background-color" : "rgba("+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+", .8)"});
+		var elem = $("#elem_"+i).css({"top" : 150+Math.random()*300, "left": 150+Math.random()*7000, "width" : 60+Math.random()*600, "height" : 25+Math.random()*100, "background-color" : "rgba("+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+", .8)"});
 		
+		elem.click(function(){
+			$(this).css({"width" : 60+Math.random()*600, "height" : 25+Math.random()*100, "background-color" : "rgba("+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+","+Math.round(Math.random()*255)+", .8)"});
+			if(paused){
+				resumeTrans();
+			}else{
+				pauseTrans();
+			}
+		})
 	}
-	//console.log("transEnd "+transEnd)
-	//$content.bind( 'webkitTransitionEnd', transEnd, false );
 	
 	$("body").css("opacity", "1");	
+	
+	$vid.bind("touchend", onVideoClick);
+	$vid.bind("click", onVideoClick);
+	
 }
 
 window.onload = init;
@@ -83,7 +108,6 @@ function tilt(alpha, beta, gamma){
 			}
 		}else if(alpha<=358 && alpha>=2){
 			left=Math.round((360-alpha)/360*-content_w);
-			$log.html("alpha : "+alpha + "<br> beta : "+beta + "<br> gamma : "+gamma + "<p>left  : "+left +"<br>top : "+top);
 		}
 
 		if(gamma<0){
@@ -95,6 +119,9 @@ function tilt(alpha, beta, gamma){
 		$content.css({"left": left, "top": top});
 		$content_top.css({"left": left, "top": top});
 		
+		if(monitor){
+			$log.html("alpha : "+alpha + "<br> beta : "+beta + "<br> gamma : "+gamma + "<p>left  : "+left +"<br>top : "+top);
+		}
 	}
 }
 
