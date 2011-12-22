@@ -92,10 +92,14 @@ function tilt(alpha, beta, gamma){
 		if(loop){
 			var left =Math.round((360-alpha)/360*-content_w);
 			
-			if(alpha>=359.9 || alpha<=.9){
+			//$log.html("log "+(alpha>=359));
+			if(alpha>=359.9 || alpha<=0.9){
 				$content.removeClass("content").addClass("content_no_easing");
 				$content_top.removeClass("content_top").addClass("content_no_easing");
-				setTimeout("resetTrans()", 1500);
+				
+				$content.css({"left": $content.css("left"), "top": $content.css("top")});
+				$content_top.css({"left": $content_top.css("left"), "top": $content_top.css("top")});
+				
 				if(alpha>=359.9){
 					$log.html("left end !!! "+left);
 					left = -content_w;
@@ -103,8 +107,12 @@ function tilt(alpha, beta, gamma){
 					$log.html("right end!!! "+left);
 					left = 0;
 				}
+				
 				$content.css({"left": left, "top": top});
 				$content_top.css({"left": left, "top": top});
+				
+				//resetTrans();
+				setTimeout("resetTrans()", 500);
 			}
 		}else if(alpha<=358 && alpha>=2){
 			left=Math.round((360-alpha)/360*-content_w);
