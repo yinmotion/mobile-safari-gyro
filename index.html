@@ -8,7 +8,7 @@
 		<title>index</title>
 		<meta name="description" content="" />
 		<meta name="author" content="Yi Liu" />
-		<meta name="viewport" content="height=800, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, height=800, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="translucent black" />
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
@@ -16,37 +16,49 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		
 		<link href="stylesheets/main.css" media="all" rel="stylesheet" type="text/css"/>
-		<script src="javascripts/lib/jquery/jquery-1.6.2.min.js"></script>
-		<script src="javascripts/lib/modernizr.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<!-- 		<script src="javascripts/lib/modernizr.js"></script> -->
     	<!-- <script src="javascripts/lib/css3animate.js"></script> -->
 		<script src="javascripts/main.js"></script>
 	</head>
 	<body>
-		<div class="content">
-			<div id="container">
-				<div class="moodboard" ><img src="images/board_01.jpg"></div>
-				<div class="moodboard" ><img src="images/board_02.jpg"></div>
-				<div class="moodboard" ><img src="images/board_03.jpg"></div>
-				<div class="moodboard" ><img src="images/board_04.jpg"></div>
-				<div class="moodboard" ><img src="images/board_05.jpg"></div>
-				
-				<div class="moodboard" ><img src="images/board_06.jpg"></div>
-				<div class="moodboard" ><img src="images/board_07.jpg"></div>
-				<div class="moodboard" ><img src="images/board_08.jpg"></div>
-				<div class="moodboard" ><img src="images/board_09.jpg"></div>
-				<div class="moodboard" ><img src="images/board_10.jpg"></div>
-				<div class="moodboard" ><img src="images/board_01.jpg"></div>
+		<div id="index_page" data-role="page">
+			<div class="content">
+				<div id="container">
+					<div class="moodboard" ><img src="images/board_01.jpg"></div>
+					<div class="moodboard" ><img src="images/board_02.jpg"></div>
+					<div class="moodboard" ><img src="images/board_03.jpg"></div>
+					<div class="moodboard" ><img src="images/board_04.jpg"></div>
+					<div class="moodboard" ><img src="images/board_05.jpg"></div>
+					
+					<div class="moodboard" ><img src="images/board_06.jpg"></div>
+					<div class="moodboard" ><img src="images/board_07.jpg"></div>
+					<div class="moodboard" ><img src="images/board_08.jpg"></div>
+					<div class="moodboard" ><img src="images/board_09.jpg"></div>
+					<div class="moodboard" ><img src="images/board_10.jpg"></div>
+					<div class="moodboard" ><img src="images/board_01.jpg"></div>
+				</div>
 			</div>
-		</div>
-		<div class="content_top">
-			<video id="vid" preload="metadata"><source src="video/tdkr_trailer.mp4" type="video/mp4"></source></video>
-			<div id="start_arrow"></div>
-		</div>
-		<div id="log"></div>
-		<div id="gyro">
-			<div class="axis" id="a_x"></div>
-			<div class="axis" id="a_y"></div>
-			<div class="axis" id="a_z"></div>
+			<div class="content_top">
+				<video id="vid" preload="metadata" data-role="button"><source src="video/tdkr_trailer.mp4" type="video/mp4"></source></video>
+				<div id="start_arrow"></div>
+			</div>
+			<div id="log">
+				<div id="log_copy"></div>
+				<div id="gyro">
+					<div class="axis" id="a_x"><!-- <div class="axis_arrow"></div> --></div>
+					<div class="axis" id="a_y"><!-- <div class="axis_arrow_flip"></div> --></div>
+					<div class="axis" id="a_z"><!-- <div class="axis_arrow_tilt"></div> --></div>
+				</div>
+			</div>
+			<div id="toggle" data-role="fieldcontain">
+				<select name="slider" id="gesture_flip" data-role="slider">
+					<option value="swipe">SWIPE</option>
+					<option value="pan" selected="true">PAN</option>
+				</select> 
+			</div>
 		</div>
 	</body>
 </html>
