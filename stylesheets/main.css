@@ -1,14 +1,22 @@
 body {
 	position:fixed;
-	margin: 0px 0px 0px 0px;
+	margin: 0;
+	overflow: hidden;
+}
+
+#block{
+	position:absolute;
+	margin:0;
+	width:2000px;
+	height: 1000px;
+	background-color: #FFF;
 	overflow: hidden;
 	
-/*	opacity: 0;*/
-	-webkit-transition: all 0.4s ease-out;
-	-moz-transition: all 0.4s ease-out;
-	-o-transition: all 0.4s ease-out;
-	-ms-transition: all 0.4s ease-out;
-	transition: all 0.4s ease-out;
+	-webkit-transition: all 1s linear;
+	-moz-transition: all 1s linear;
+	-o-transition: all 1s linear;
+	-ms-transition: all 1s linear;
+	transition: all 1s linear;
 }
 
 #start_arrow{
@@ -273,5 +281,4 @@ body {
 	top:0px;
 	left:790px;
 	width:500px;
-	
 }

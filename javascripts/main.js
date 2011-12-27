@@ -63,8 +63,17 @@ $("#index_page").live('pageinit', function() {
 	
 	$log.bind( 'webkitTransitionEnd', onLogTransEnd);
 	
-	$body.css("opacity", "1");	
+	console.log("pageinit");	
 });
+
+
+$('#index_page').live('pageshow', function() {
+    console.log('show index_page');
+	$("#block").delay(800).animate({"opacity" : 0}, 600, function(){
+		$("#block").remove();
+	});	
+});
+
 
 function onGestureChange(){
 	gesturePan = !gesturePan;
